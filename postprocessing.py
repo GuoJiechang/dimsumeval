@@ -58,7 +58,7 @@ index2label = {i: l for l, i in LABEL_SCHEME.items()}
 label2index = LABEL_SCHEME
 #print('index2label: ', index2label)
 #print('label2index: ', label2index)
-file3 = open('/dimsumeval/dimsum16.test', 'r')
+file3 = open('dimsumeval/dimsum16.test', 'r')
 Lines = file3.readlines()
 
 problem_line = 0
@@ -79,7 +79,7 @@ for line in Lines:
 #print(len(Results))
 
 
-file1 = open('/dimsumeval/dimsum16.test.pred.mwe', 'r')
+file1 = open('dimsumeval/dimsum16.test.pred.mwe', 'r')
 Lines = file1.readlines()
 pred_mwe = []
 for line in Lines:
@@ -87,7 +87,7 @@ for line in Lines:
 
 #print(pred_mwe)
 
-file2 = open('/dimsumeval/dimsum16.test.pred.ss', 'r')
+file2 = open('dimsumeval/dimsum16.test.pred.ss', 'r')
 Lines = file2.readlines()
 pred_ss = []
 for line in Lines:
@@ -98,7 +98,7 @@ token_offsets = [0] * len(pred_mwe)
 df = pd.DataFrame(list(zip(token_offsets,pred_mwe, pred_ss, parent_offsets)),
                columns =['token_id','MWE', 'SS','offset'])
 #print(df)
-print(df.shape)
+#print(df.shape)
 # print(df.loc[df['MWE'].isin(['B'])])
 # #print(df.loc[df['SS'] != 'unknown'])
 
@@ -141,8 +141,8 @@ count = 0
 for df_sent in df_list:
     #print("sentID " + str(count))
     first_index = df_sent.index[0]
-    if count == problem_line:
-        print("first index = " + str(first_index))
+    #if count == problem_line:
+    #    print("first index = " + str(first_index))
     idx_B = df_sent.index[df_sent['MWE'] == 'B']
     idxB_list = idx_B.values.tolist()
     # if count == problem_line:
@@ -220,8 +220,8 @@ for df_sent in df_list:
     #print(count)
 
     
-print("len of df_list[0]: " + str(df_list[0].shape[0]))
-print(df_list[problem_line]) 
+#print("len of df_list[0]: " + str(df_list[0].shape[0]))
+#print(df_list[problem_line]) 
 #print(df[43:60])
 
 def listToString(s):
@@ -241,7 +241,7 @@ def listToString(s):
     # return string
     return str1
 
-file4 = open('/dimsumeval/dimsum16.test.pred', 'w')
+file4 = open('dimsumeval/dimsum16.test.pred', 'w')
 
 
 Pred_results = []
@@ -273,7 +273,7 @@ for result in Results:
         # break
     Pred_results.append(r)
 
-print(count)
+#print(count)
 for result in Pred_results:
     line = listToString(result)
     file4.write(line)

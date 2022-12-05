@@ -366,6 +366,7 @@ if __name__=='__main__':
     sent = []
     goldFP = args[0]
     predFs = [readsents(fileinput.input(predFP)) for predFP in args[1:]]
+    predFs
     statsCs = [Counter() for predFP in args[1:]]
     sststatsCs = [defaultdict(Counter) for predF in args[1:]]
     gmwetypesCs = [Counter() for predFP in args[1:]]    # these will all have the same contents
@@ -376,6 +377,7 @@ if __name__=='__main__':
         #print(gdata)
         #gtags_mwe = [t.encode('utf-8') for t in gdata["tags"]]
         gtags_mwe = gdata["tags"]
+        #print(gtags_mwe)
         #print("gtags_mwe type")
         #print(type(gtags_mwe))
         #print(gtags_mwe)
@@ -385,8 +387,9 @@ if __name__=='__main__':
         #print(glbls)
         goldLblsC.update(glbls.values())
         for predF,stats,gmwetypes,pmwetypes,sststats,conf in zip(predFs,statsCs,gmwetypesCs,pmwetypesCs,sststatsCs,confCs):
+            #print(predF)
             sentId,pdata = next(predF)
-            #print("predF")
+            
             #print(pdata)
             #ptags_mwe = [t.encode('utf-8') for t in pdata["tags"]]
             ptags_mwe = pdata["tags"]
@@ -451,11 +454,11 @@ if __name__=='__main__':
         stats['Pred_#Types'] = len(pmwetypes)
 
         if len(predFs)==1:
-            print('mwestats = ', dict(stats), ';', sep='')
+            #print('mwestats = ', dict(stats), ';', sep='')
             print()
-            print('sststats = ', dict(sststats), ';', sep='')
+            #print('sststats = ', dict(sststats), ';', sep='')
             print()
-            print('conf = ', dict(conf), ';', sep='')
+            #print('conf = ', dict(conf), ';', sep='')
             print()
 
         parts = [(' {1}{0:.2%}'.format(float(stats[x]), relativeColor(stats[x],statsCs[0][x]))+Colors.PLAINTEXT,
@@ -498,26 +501,26 @@ if __name__=='__main__':
             header.append(' <-- PRED')
 
             # matrix content
-            if not conf:
-                print(Colors.RED+'No gold or predicted supersenses found: check that the input is in the right format. Exiting.'+Colors.RED+Colors.ENDC)
-                sys.exit(1)
-            nondiag_max = [n for (g,p),n in conf.most_common() if (g is None or g.startswith(d)) and g!=p][0]
+            #if not conf:
+            #    print(Colors.RED+'No gold or predicted supersenses found: check that the input is in the right format. Exiting.'+Colors.RED+Colors.ENDC)
+            #    sys.exit(1)
+            #nondiag_max = [n for (g,p),n in conf.most_common() if (g is None or g.startswith(d)) and g!=p][0]
 
-            for i,g in enumerate(lbls):
-                if i>=len(matrix): continue
-                for j,p in enumerate(lbls):
-                    while len(matrix[i])<=j+1:
-                        matrix[i].append('')
-                    v = conf[g,p]
-                    #if v>0 or i==j:
-                    #    print(v, g,p, int((v-1)/nondiag_max*len(SPECTRUM)), nondiag_max)
-                    colr = SPECTRUM[int((v-1)/nondiag_max*len(SPECTRUM))] if v>0 and i!=j else Colors.PLAINTEXT
-                    matrix[i][j+1] = colr+' {:4}'.format(conf[g,p] or '')+Colors.PLAINTEXT
+            # for i,g in enumerate(lbls):
+            #     if i>=len(matrix): continue
+            #     for j,p in enumerate(lbls):
+            #         while len(matrix[i])<=j+1:
+            #             matrix[i].append('')
+            #         v = conf[g,p]
+            #         #if v>0 or i==j:
+            #         #    print(v, g,p, int((v-1)/nondiag_max*len(SPECTRUM)), nondiag_max)
+            #         colr = SPECTRUM[int((v-1)/nondiag_max*len(SPECTRUM))] if v>0 and i!=j else Colors.PLAINTEXT
+            #         matrix[i][j+1] = colr+' {:4}'.format(conf[g,p] or '')+Colors.PLAINTEXT
 
-            print(''.join(header))
-            for ln in matrix:
-                print(''.join(ln))
-            print()
+            # print(''.join(header))
+            # for ln in matrix:
+            #     print(''.join(ln))
+            # print()
 
     # supersense scores
     print(syspad+'  Acc  |   P   |   R   |   F   || R: NSST | VSST ')
