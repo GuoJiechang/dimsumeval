@@ -2411,7 +2411,6 @@
 24	prices	price	NOUN	O	0		n.attribute	trustpilot-222
 
 1	Fuck	fuck	VERB	O	0			tweebank.55
-2			PRON	O	0			tweebank.55
 
 1	@MrNixon357	@USER	X	O	0			tweebank.257
 2	aight	aight	INTJ	O	0			tweebank.257
@@ -3894,7 +3893,6 @@
 5	odd	odd	PROPN	B	0		n.event	tweebank.6
 6	future	future	PROPN	I	5			tweebank.6
 7	rn	rn	ADV	I	6			tweebank.6
-8			SYM	O	0			tweebank.6
 
 1	Any	any	DET	O	0			ted.iwslt.1371.6
 2	one	one	NUM	O	0			ted.iwslt.1371.6
@@ -5103,7 +5101,6 @@
 17	eating	eat	VERB	O	0		v.consumption	tweebank.328
 18	as	as	ADP	O	0			tweebank.328
 19	usual	usual	ADJ	O	0			tweebank.328
-20			PUNCT	O	0			tweebank.328
 
 1	Turned	turn	VERB	B	0		v.motion	trustpilot-174
 2	up	up	PART	I	1			trustpilot-174
@@ -11492,7 +11489,6 @@
 2	's	's	AUX	O	0			tweebank.207
 3	raining	rain	VERB	O	0		v.weather	tweebank.207
 4	!!	!!	PUNCT	O	0			tweebank.207
-5			PUNCT	O	0			tweebank.207
 
 1	And	and	CONJ	O	0			ted.naist.007-HansRosling_2010S.iwslt.9121.10
 2	their	their	PRON	O	0			ted.naist.007-HansRosling_2010S.iwslt.9121.10
@@ -15648,7 +15644,6 @@
 25	dreads	dread	NOUN	O	0		n.body	tweebank.237
 26	lol	lol	INTJ	O	0			tweebank.237
 27	<-	<-	X	O	0			tweebank.237
-28			PUNCT	O	0			tweebank.237
 
 1	We	we	PRON	O	0			trustpilot-279
 2	would	would	VERB	O	0			trustpilot-279
